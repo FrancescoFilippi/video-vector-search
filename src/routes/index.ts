@@ -1,6 +1,6 @@
 import express from "express";
 import { downloadAndEmbedVideo } from "../services/downloadAndEmbedVideo";
-import { getSimilarByDescription } from "../services/videoSearch";
+import { getSimilarByDescription, getSimilarById } from "../services/videoSearch";
 
 const router = express.Router();
 
@@ -14,8 +14,8 @@ router.get('/similar-by-description', async (req: any, res: any) => {
   res.json(result);
 });
 
-router.get('/similar-by-category', async (req: any, res: any) => {
-  const result = await getSimilarByDescription(req.body.query);
+router.get('/similar-by-id', async (req: any, res: any) => {
+  const result = await getSimilarById(req.body.videoId);
   res.json(result);
 });
 
